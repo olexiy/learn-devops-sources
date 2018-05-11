@@ -1,0 +1,10 @@
+---
+- hosts: webservers
+  tasks:
+    - name: install nginx
+      apt: name=nginx state=latest
+    - name: ensure nginx is running (end enable it at boot)
+      service: name=nginx state=started enabled=yes
+  handlers:
+    - name: restart nginx
+      service: name=nginx state=restarted 
